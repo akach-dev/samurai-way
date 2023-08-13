@@ -1,10 +1,12 @@
 import React from 'react';
-import './Header.css';
+import s from './Header.module.css';
 
 
 export const Header = () => {
   return (
-     <header>header</header>
+     <header className={s.header}>
+       header
+     </header>
 
   );
 };
