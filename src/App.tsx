@@ -1,26 +1,16 @@
 import React from 'react';
 import './App.css';
-import img from '../src/assets/img/img.webp'
+import {Header} from "./components/Header";
+import {Navbar} from "./components/Navbar";
+import {Profile} from "./components/Profile";
 
 function App() {
   return (
      <div className={'wrapper'}>
-       <header>header</header>
-       <aside>
-         <nav>
-           <ul>
-             <li>Profile</li>
-             <li>Messages</li>
-             <li>News</li>
-             <li>Music</li>
-           </ul>
-         </nav>
-         <span>Settings</span>
-       </aside>
+       <Header/>
+       <Navbar/>
        <main>
-         <img
-            className={'img'}
-            src={img} alt=""/>
+         <Profile/>
        </main>
        <footer>footer</footer>
      </div>
