@@ -1,5 +1,7 @@
 import React from 'react';
-import img from "../assets/img/img.webp";
+import './Profile.css';
+
+import img from "../../assets/img/img.webp";
 
 export const Profile = () => {
   return (
