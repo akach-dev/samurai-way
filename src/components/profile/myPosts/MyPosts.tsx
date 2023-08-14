@@ -1,13 +1,13 @@
 import React from 'react';
-import s from './MyPosts.module.css'
-
-import house from "../../assets/img/img.webp";
+import {Post} from "./post/Post";
 
 export const MyPosts = () => {
   return (
-     <div>
-       <img className={s.img} src={house} alt="house"/>
-     </div>
+     <>
+       <div>MyPosts</div>
+       <Post/>
+     </>
+
   );
 };
 
