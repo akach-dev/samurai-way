@@ -10,6 +10,7 @@ export const Profile: FC<ProfilePropsType> = (props) => {
   return (
      <div>
        <img className={s.img} src={house} alt="house"/>
+       
        <MyPosts/>
      </div>
   );
