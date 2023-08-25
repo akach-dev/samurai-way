@@ -17,3 +17,14 @@ footer {
     grid-column: span 4;
 }
 
+a.active {
+    color: gold;
+}
+
+aside {
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+}

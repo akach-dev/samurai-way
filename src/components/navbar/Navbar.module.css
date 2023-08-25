@@ -2,3 +2,8 @@ aside {
     grid-column: auto;
     background-color: antiquewhite;
 }
+
+ul, li {
+    list-style: none;
+}
+
