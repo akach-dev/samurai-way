@@ -1,0 +1,22 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 1rem;
+}
+
+.dialogsItems {
+    padding: 1rem;
+
+}
+
+.dialogsItem {
+
+}
+
+.messages {
+    padding: 1rem;
+}
+
+.messagesItem {
+
+}
