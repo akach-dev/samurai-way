@@ -1,16 +1,12 @@
 import React from 'react';
-import s from './Profile.module.css'
 
-import house from "../../assets/img/img.webp";
 import {MyPosts} from "./myPosts/MyPosts";
-
-type ProfilePropsType = {}
+import {ProfileInfo} from "./profileInfo/ProfileInfo";
 
 export function Profile() {
   return (
      <div>
-       <img className={s.img} src={house} alt="house"/>
-
+       <ProfileInfo/>
        <MyPosts/>
      </div>
   );
