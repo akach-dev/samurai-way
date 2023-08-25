@@ -7,13 +7,13 @@ export const Navbar = () => {
      <aside>
        <nav>
          <ul>
-           <li>Profile</li>
-           <li>Messages</li>
-           <li>News</li>
-           <li>Music</li>
+           <li><a href="/profile">Profile</a></li>
+           <li><a href="/messages">Messages</a></li>
+           <li><a href="/news">News</a></li>
+           <li><a href="/music">Music</a></li>
          </ul>
        </nav>
-       <span>Settings</span>
+       <span>  Settings</span>
      </aside>
 
   );
