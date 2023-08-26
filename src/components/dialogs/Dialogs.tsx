@@ -31,6 +31,7 @@ export const Dialogs: FC = () => {
     {message: 'Yo', id: '5'},
   ]
 
+
   const dialogs = dialogsData.map(dialog => <DialogsItem key={dialog.id} name={dialog.name} id={dialog.id}/>)
   const messages = messagesData.map(message => <Message key={message.id} message={message.message}/>)
 

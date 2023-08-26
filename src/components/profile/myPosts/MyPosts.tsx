@@ -14,7 +14,7 @@ export const MyPosts: FC = () => {
   const postData: PostDataType[] = [
     {message: 'Hi, how are you?', id: '1', likesCount: 12},
     {message: "It's my first post", id: '2', likesCount: 15},
-    {message: "Blabla", id: '3', likesCount: 18},
+    {message: "Blab-la", id: '3', likesCount: 18},
     {message: "Dada", id: '4', likesCount: 11},
   ]
 
