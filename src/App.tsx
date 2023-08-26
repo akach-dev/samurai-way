@@ -17,8 +17,9 @@ function App({state}: AppPropsType) {
        <Header/>
        <Navbar/>
        <main>
-         <Route render={() => <Profile posts={state.posts}/>} path='/profile'/>
-         <Route render={() => <Dialogs dialogs={state.dialogs} messages={state.messages}/>} path='/dialogs'/>
+         <Route render={() => <Profile data={state.profilePage}/>} path='/profile'/>
+         <Route render={() => <Dialogs data={state.messagesPage}/>}
+                path='/dialogs'/>
        </main>
        <footer>footer</footer>
      </div>
