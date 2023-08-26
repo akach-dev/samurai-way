@@ -15,8 +15,11 @@ export const MyPosts: FC = () => {
   const postData: PostDataType[] = [
     {message: 'Hi, how are you?', id: '1', likesCount: 12},
     {message: "It's my first post", id: '2', likesCount: 15},
+    {message: "Blabla", id: '3', likesCount: 18},
+    {message: "Dada", id: '4', likesCount: 11},
   ]
 
+  const posts = postData.map(post => <Post id={post.id} message={post.message} likesCount={post.likesCount}/>)
 
   return (
      <div className={s.myPosts}>
@@ -26,7 +29,7 @@ export const MyPosts: FC = () => {
          <button>Add post</button>
        </div>
        <div className={s.myPost}>
-         <Post/>
+         {posts}
        </div>
      </div>
 
