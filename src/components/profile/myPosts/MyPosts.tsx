@@ -32,7 +32,6 @@ export const MyPosts: FC = () => {
          {posts}
        </div>
      </div>
-
   );
 };
 
