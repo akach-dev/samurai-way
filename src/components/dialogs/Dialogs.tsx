@@ -30,6 +30,7 @@ const Message: FC<MessagePropsType> = ({message}) => {
 }
 
 export const Dialogs: FC = () => {
+
   const dialogsData: DialogsItemPropsType[] = [
     {name: 'Dimcho', id: '1'},
     {name: 'Andrey', id: '2'},
@@ -37,7 +38,6 @@ export const Dialogs: FC = () => {
     {name: 'Victor', id: '4'},
     {name: 'Valera', id: '5'},
   ]
-
   const messagesData: MessagesDataType[] = [
     {message: 'Lorem ipsum dolor sit amet.', id: '1'},
     {message: 'Lorem ipsum dolor.', id: '2'},
@@ -46,20 +46,16 @@ export const Dialogs: FC = () => {
     {message: 'Yo', id: '5'},
   ]
 
+  const dialogs = dialogsData.map(dialog => <DialogsItem key={dialog.id} name={dialog.name} id={dialog.id}/>)
+  const messages = messagesData.map(message => <Message key={message.id} message={message.message}/>)
 
   return (
      <div className={s.dialogs}>
        <ul className={s.dialogsItems}>
-         <DialogsItem name={'Dimcho'} id={'1'}/>
-         <DialogsItem name={'Andrey'} id={'2'}/>
-         <DialogsItem name={'Svea'} id={'3'}/>
-         <DialogsItem name={'Victor'} id={'4'}/>
-         <DialogsItem name={'Valera'} id={'5'}/>
+         {dialogs}
        </ul>
        <ul className={s.messages}>
-         <Message message='Lorem ipsum dolor sit amet.'/>
-         <Message message='Lorem ipsum dolor.'/>
-         <Message message='Lorem ipsum .'/>
+         {messages}
        </ul>
      </div>
   );
