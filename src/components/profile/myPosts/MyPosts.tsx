@@ -2,23 +2,21 @@ import React, {FC} from 'react';
 import {Post} from "./post/Post";
 import s from './MyPosts.module.css'
 
-type PostDataType = {
+export type PostDataType = {
   id: string
   message: string
   likesCount: number
 }
 
+type MyPostsPropsType = {
+  posts: PostDataType[]
+}
 
-export const MyPosts: FC = () => {
 
-  const postData: PostDataType[] = [
-    {message: 'Hi, how are you?', id: '1', likesCount: 12},
-    {message: "It's my first post", id: '2', likesCount: 15},
-    {message: "Blab-la", id: '3', likesCount: 18},
-    {message: "Dada", id: '4', likesCount: 11},
-  ]
+export const MyPosts: FC<MyPostsPropsType> = ({posts}) => {
 
-  const posts = postData.map(post => <Post id={post.id} message={post.message} likesCount={post.likesCount}/>)
+
+  const post = posts.map(post => <Post id={post.id} message={post.message} likesCount={post.likesCount}/>)
 
   return (
      <div className={s.myPosts}>
@@ -28,7 +26,7 @@ export const MyPosts: FC = () => {
          <button>Add post</button>
        </div>
        <div className={s.myPost}>
-         {posts}
+         {post}
        </div>
      </div>
   );
