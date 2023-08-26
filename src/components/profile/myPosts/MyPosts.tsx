@@ -11,7 +11,6 @@ type PostDataType = {
 
 export const MyPosts: FC = () => {
 
-
   const postData: PostDataType[] = [
     {message: 'Hi, how are you?', id: '1', likesCount: 12},
     {message: "It's my first post", id: '2', likesCount: 15},
