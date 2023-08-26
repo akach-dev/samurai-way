@@ -1,6 +1,12 @@
-import React from 'react';
+import React, {FC} from 'react';
 
-export const Post = () => {
+type  PostPropsType = {
+  message: string
+  id: string
+  likesCount: number
+}
+
+export const Post: FC<PostPropsType> = ({message, id, likesCount}) => {
   return (
      <div>Post</div>
   );
