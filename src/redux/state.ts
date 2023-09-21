@@ -1,7 +1,6 @@
 import {PostDataType} from "../components/profile/myPosts/MyPosts";
 import {DialogsItemPropsType} from "../components/dialogs/dialogsItem/DialogsItem";
 import {MessagesDataType} from "../components/dialogs/Dialogs";
-import {rerenderEntireTree} from "../render";
 
 export type ProfilePageType = {
   posts: PostDataType[]
@@ -17,6 +16,9 @@ export type StateType = {
   messagesPage: MessagesPageType
 }
 
+let rerenderEntireTree = () => {
+
+}
 
 export const state: StateType = {
   profilePage: {
@@ -52,9 +54,13 @@ export const addPost = () => {
   }
   state.profilePage.posts.push(newPost)
   state.profilePage.newPostText = ''
-  rerenderEntireTree(state)
+  rerenderEntireTree()
 }
 export const updateNewPostText = (text: string) => {
   state.profilePage.newPostText = text
-  rerenderEntireTree(state)
+  rerenderEntireTree()
+}
+
+export const subscribe = (observer: () => void) => {
+  rerenderEntireTree = observer
 }
