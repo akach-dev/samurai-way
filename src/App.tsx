@@ -5,7 +5,7 @@ import {Navbar} from "./components/navbar/Navbar";
 import {Profile} from "./components/profile/Profile";
 import {Dialogs} from "./components/dialogs/Dialogs";
 import {Route} from "react-router-dom";
-import {StateType, updateNewPostText} from "./redux/state";
+import {StateType} from "./redux/state";
 
 type AppPropsType = {
   state: StateType
@@ -14,7 +14,7 @@ type AppPropsType = {
 }
 
 
-function App({state, addPost}: AppPropsType) {
+function App({state, addPost, updateNewPostText}: AppPropsType) {
   return (
      <div className={'wrapper'}>
        <Header/>
