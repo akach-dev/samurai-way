@@ -7,6 +7,6 @@ import {addPost, StateType} from "./redux/state";
 
 export const rerenderEntireTree = (state: StateType) => {
   ReactDOM.render(
-     <BrowserRouter><App state={state} addPost={addPost}/></BrowserRouter>, document.getElementById('root')
-  );
+     <BrowserRouter><App state={state} addPost={addPost}/></BrowserRouter>, document.getElementById('root'))
+  
 }

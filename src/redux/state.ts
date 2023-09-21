@@ -1,6 +1,7 @@
 import {PostDataType} from "../components/profile/myPosts/MyPosts";
 import {DialogsItemPropsType} from "../components/dialogs/dialogsItem/DialogsItem";
 import {MessagesDataType} from "../components/dialogs/Dialogs";
+import {rerenderEntireTree} from "../render";
 
 
 export type ProfilePageType = {
@@ -50,5 +51,6 @@ export const addPost = (text: string) => {
     id: '5', message: text, likesCount: 0
   }
   state.profilePage.posts.push(newPost)
+  rerenderEntireTree(state)
 }
 
