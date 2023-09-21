@@ -3,15 +3,15 @@ import {DialogsItemPropsType} from "../components/dialogs/dialogsItem/DialogsIte
 import {MessagesDataType} from "../components/dialogs/Dialogs";
 import {rerenderEntireTree} from "../render";
 
-
 export type ProfilePageType = {
   posts: PostDataType[]
+  newPostText: string
+
 }
 export type MessagesPageType = {
   messages: MessagesDataType[]
   dialogs: DialogsItemPropsType[]
 }
-
 export type StateType = {
   profilePage: ProfilePageType
   messagesPage: MessagesPageType
@@ -26,7 +26,7 @@ export const state: StateType = {
       {message: "Blab-la", id: '3', likesCount: 18},
       {message: "Dada", id: '4', likesCount: 11},
     ],
-
+    newPostText: 'it-incubator',
   },
   messagesPage: {
     messages: [
@@ -46,11 +46,15 @@ export const state: StateType = {
   }
 }
 
-export const addPost = (text: string) => {
+export const addPost = () => {
   const newPost: PostDataType = {
-    id: '5', message: text, likesCount: 0
+    id: '5', message: state.profilePage.newPostText, likesCount: 0
   }
   state.profilePage.posts.push(newPost)
+  state.profilePage.newPostText = ''
   rerenderEntireTree(state)
 }
-
+export const updateNewPostText = (text: string) => {
+  state.profilePage.newPostText = text
+  rerenderEntireTree(state)
+}
