@@ -19,6 +19,7 @@ export const MyPosts: FC<MyPostsPropsType> = ({posts, addPost}) => {
   const addPostHandler = () => {
     if (textareaRef.current) {
       addPost(textareaRef.current.value)
+      textareaRef.current.value = ''
     }
   }
 
