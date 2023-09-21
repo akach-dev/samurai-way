@@ -12,9 +12,7 @@ type MyPostsPropsType = {
   posts: PostDataType[]
 }
 
-
 export const MyPosts: FC<MyPostsPropsType> = ({posts}) => {
-
 
   const post = posts.map(post => <Post id={post.id} message={post.message} likesCount={post.likesCount}/>)
 
