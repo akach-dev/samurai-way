@@ -27,7 +27,9 @@ export type StoreType = {
 }
 
 export type AddPostAC = ReturnType<typeof addPostAC>
+
 export type UpdateNewPostTextAC = ReturnType<typeof updateNewPostTextAC>
+
 export type ActionType = AddPostAC | UpdateNewPostTextAC
 
 export const store: StoreType = {
