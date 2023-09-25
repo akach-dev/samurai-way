@@ -23,7 +23,9 @@ function App({state, store}: AppPropsType) {
             <Profile
                dispatch={store.dispatch.bind(store)}
                profilePage={state.profilePage}/>} path='/profile'/>
-         <Route render={() => <Dialogs data={state.messagesPage}/>} path='/dialogs'/>
+         <Route render={() => <Dialogs
+            dispatch={store.dispatch.bind(store)}
+            data={state.messagesPage}/>} path='/dialogs'/>
        </main>
        <footer>footer</footer>
      </div>

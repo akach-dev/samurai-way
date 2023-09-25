@@ -10,6 +10,7 @@ export type ProfilePageType = {
 export type MessagesPageType = {
   messages: MessagesDataType[]
   dialogs: DialogsItemPropsType[]
+  newMessageText: string
 }
 export type StateType = {
   profilePage: ProfilePageType
@@ -24,13 +25,16 @@ export type StoreType = {
   _updateNewPostText: (text: string) => void
   subscribe: (observer: () => void) => void
   dispatch: (action: ActionType) => void
+  _updateNewMessageText: (text: string) => void
+  _sendMessage: () => void
 }
 
 export type AddPostAC = ReturnType<typeof addPostAC>
-
 export type UpdateNewPostTextAC = ReturnType<typeof updateNewPostTextAC>
+export type UpdateNewMessageTextAC = ReturnType<typeof updateNewMessageTextAC>
+export type SendNewMessageTextAC = ReturnType<typeof sendNewMessageTextAC>
 
-export type ActionType = AddPostAC | UpdateNewPostTextAC
+export type ActionType = AddPostAC | UpdateNewPostTextAC | UpdateNewMessageTextAC | SendNewMessageTextAC
 
 export const store: StoreType = {
   _state: {
@@ -58,6 +62,7 @@ export const store: StoreType = {
         {name: 'Victor', id: '4'},
         {name: 'Valera', id: '5'},
       ],
+      newMessageText: ''
     }
   },
   _callSubscriber() {
@@ -81,7 +86,16 @@ export const store: StoreType = {
   _updateNewPostText(text: string) {
     this._state.profilePage.newPostText = text
     this._callSubscriber()
-
+  },
+  _updateNewMessageText(text: string) {
+    this._state.messagesPage.newMessageText = text
+    this._callSubscriber()
+  },
+  _sendMessage() {
+    const message = this._state.messagesPage.newMessageText
+    this._state.messagesPage.messages.push({id: "6", message})
+    this._state.messagesPage.newMessageText = ''
+    this._callSubscriber()
   },
 
   dispatch(action: ActionType) {
@@ -91,6 +105,12 @@ export const store: StoreType = {
         break
       case 'UPDATE-NEW-POST-TEXT':
         this._updateNewPostText(action.text)
+        break
+      case "UPDATE-NEW-MESSAGE-TEXT":
+        this._updateNewMessageText(action.text)
+        break
+      case "SEND-NEW-MESSAGE-TEXT":
+        this._sendMessage()
         break
       default:
         return this._state
@@ -104,4 +124,12 @@ export const addPostAC = () => {
 export const updateNewPostTextAC = (text: string) => {
   return {type: 'UPDATE-NEW-POST-TEXT', text} as const
 }
+export const updateNewMessageTextAC = (text: string) => {
+  return {type: 'UPDATE-NEW-MESSAGE-TEXT', text} as const
+}
+export const sendNewMessageTextAC = () => {
+  return {type: 'SEND-NEW-MESSAGE-TEXT'} as const
+}
+
+
 
