@@ -1,6 +1,8 @@
 import {PostDataType} from "../components/profile/myPosts/MyPosts";
 import {DialogsItemPropsType} from "../components/dialogs/dialogsItem/DialogsItem";
 import {MessagesDataType} from "../components/dialogs/Dialogs";
+import {profileReducer} from "./profile-reducer";
+import {messagesReducer} from "./messages-reducer";
 
 export type ProfilePageType = {
   posts: PostDataType[]
@@ -27,6 +29,19 @@ export type StoreType = {
   dispatch: (action: ActionType) => void
   _updateNewMessageText: (text: string) => void
   _sendMessage: () => void
+}
+
+export const addPostAC = () => {
+  return {type: 'ADD-POST'} as const
+}
+export const updateNewPostTextAC = (text: string) => {
+  return {type: 'UPDATE-NEW-POST-TEXT', text} as const
+}
+export const updateNewMessageTextAC = (text: string) => {
+  return {type: 'UPDATE-NEW-MESSAGE-TEXT', text} as const
+}
+export const sendNewMessageTextAC = () => {
+  return {type: 'SEND-NEW-MESSAGE-TEXT'} as const
 }
 
 export type AddPostAC = ReturnType<typeof addPostAC>
@@ -99,37 +114,30 @@ export const store: StoreType = {
   },
 
   dispatch(action: ActionType) {
-    switch (action.type) {
-      case 'ADD-POST' :
-        this._addPost()
-        break
-      case 'UPDATE-NEW-POST-TEXT':
-        this._updateNewPostText(action.text)
-        break
-      case "UPDATE-NEW-MESSAGE-TEXT":
-        this._updateNewMessageText(action.text)
-        break
-      case "SEND-NEW-MESSAGE-TEXT":
-        this._sendMessage()
-        break
-      default:
-        return this._state
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action)
+    this._state.messagesPage = messagesReducer(this._state.messagesPage, action)
+    this._callSubscriber()
+
+    /* switch (action.type) {
+       case 'ADD-POST' :
+         this._addPost()
+         break
+       case 'UPDATE-NEW-POST-TEXT':
+         this._updateNewPostText(action.text)
+         break
+       case "UPDATE-NEW-MESSAGE-TEXT":
+         this._updateNewMessageText(action.text)
+         break
+       case "SEND-NEW-MESSAGE-TEXT":
+         this._sendMessage()
+         break
+       default:
+         return this._state
+     }*/
   }
 }
 
-export const addPostAC = () => {
-  return {type: 'ADD-POST'} as const
-}
-export const updateNewPostTextAC = (text: string) => {
-  return {type: 'UPDATE-NEW-POST-TEXT', text} as const
-}
-export const updateNewMessageTextAC = (text: string) => {
-  return {type: 'UPDATE-NEW-MESSAGE-TEXT', text} as const
-}
-export const sendNewMessageTextAC = () => {
-  return {type: 'SEND-NEW-MESSAGE-TEXT'} as const
-}
+
 
 
 

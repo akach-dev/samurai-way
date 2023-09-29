@@ -1,7 +1,7 @@
 import React, {FC, useRef} from 'react';
 import {Post} from "./post/Post";
 import s from './MyPosts.module.css'
-import {ActionType, addPostAC, updateNewPostTextAC} from "../../../redux/state";
+import {ActionType, addPostAC, updateNewPostTextAC} from "../../../redux/store";
 
 export type PostDataType = {
   id: string
