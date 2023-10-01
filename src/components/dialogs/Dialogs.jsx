@@ -6,8 +6,6 @@ import {sendNewMessageTextAC, updateNewMessageTextAC} from "../../redux/store";
 
 
 export const Dialogs = ({data, dispatch}) => {
-
-
   const dialog = data.dialogs.map(dialog => <DialogsItem key={dialog.id} name={dialog.name} id={dialog.id}/>)
   const message = data.messages.map(message => <Message key={message.id} message={message.message}/>)
 

@@ -5,6 +5,7 @@ import {addPostAC, updateNewPostTextAC} from "../../../redux/store";
 
 
 export const MyPosts = ({posts, newPostText, dispatch}) => {
+
   const textareaRef = useRef(null)
 
   const addPostHandler = () => {

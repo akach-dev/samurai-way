@@ -7,7 +7,8 @@ import {Dialogs} from "./components/dialogs/Dialogs";
 import {Route} from "react-router-dom";
 
 
-function App({state, store}) {
+function App({state, dispatch}) {
+  
   return (
     <div className={'wrapper'}>
       <Header/>
@@ -15,10 +16,10 @@ function App({state, store}) {
       <main>
         <Route render={() =>
           <Profile
-            dispatch={store.dispatch.bind(store)}
+            dispatch={dispatch}
             profilePage={state.profilePage}/>} path='/profile'/>
         <Route render={() => <Dialogs
-          dispatch={store.dispatch.bind(store)}
+          dispatch={dispatch}
           data={state.messagesPage}/>} path='/dialogs'/>
       </main>
       <footer>footer</footer>
