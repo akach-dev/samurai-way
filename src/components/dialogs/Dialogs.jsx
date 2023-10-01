@@ -5,7 +5,6 @@ import {Message} from "./message/Message";
 
 
 export const Dialogs = ({onNewMessage, onSendMessage, messagesPage}) => {
-  console.log('Dialogs')
 
   const newMessageText = messagesPage.newMessageText
 

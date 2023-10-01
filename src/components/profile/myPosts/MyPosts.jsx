@@ -3,7 +3,7 @@ import {Post} from "./post/Post";
 import s from './MyPosts.module.css'
 
 
-export const MyPosts = ({posts, addPost, onChange, newPostText}) => {
+export const MyPosts = ({posts, addPost, updatePostText, newPostText}) => {
 
   const textareaRef = useRef(null)
 
@@ -15,7 +15,7 @@ export const MyPosts = ({posts, addPost, onChange, newPostText}) => {
                                                 likesCount={post.likesCount}/>)
 
   const onChangeHandler = () => {
-    onChange(textareaRef.current.value)
+    updatePostText(textareaRef.current.value)
 
   };
   return (
