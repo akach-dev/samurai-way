@@ -11,8 +11,9 @@ export const MyPostsContainer = ({store}) => {
   }
 
 
-  const posts = store.getState().profilePage.posts.map(post => <Post key={post.id} id={post.id} message={post.message}
-                                                                     likesCount={post.likesCount}/>)
+  const posts = store.getState().profilePage.posts.map(post =>
+    <Post key={post.id} id={post.id} message={post.message}
+          likesCount={post.likesCount}/>)
 
   const onChange = (text) => {
     store.dispatch(updateNewPostTextAC(text))
