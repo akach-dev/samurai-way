@@ -1,19 +1,16 @@
-import {MessagesPageType, SendNewMessageTextAC, UpdateNewMessageTextAC} from "./store";
-
-type ActionType = UpdateNewMessageTextAC | SendNewMessageTextAC
-
-export const messagesReducer = (state: MessagesPageType, action: ActionType) => {
+export const messagesReducer = (state, action) => {
   switch (action.type) {
     case "UPDATE-NEW-MESSAGE-TEXT":
       state.newMessageText = action.text
-      return
+      return state
+
 
     case "SEND-NEW-MESSAGE-TEXT":
       const message = state.newMessageText
       state.messages.push({id: "6", message})
       state.newMessageText = ''
-      return
-
+      return state
+    
     default:
       return state
   }
