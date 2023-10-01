@@ -7,7 +7,7 @@ import {Route} from "react-router-dom";
 import {DialogsContainer} from "./components/dialogs/DialogsContainer";
 
 
-function App({state, dispatch, store}) {
+function App() {
 
   return (
     <div className={'wrapper'}>
@@ -16,11 +16,9 @@ function App({state, dispatch, store}) {
       <main>
         <Route render={() =>
           <Profile
-            store={store}
           />
         } path='/profile'/>
         <Route render={() => <DialogsContainer
-          store={store}
         />} path='/dialogs'/>
       </main>
       <footer>footer</footer>

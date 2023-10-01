@@ -1,8 +1,20 @@
 import React from 'react';
 import s from './Dialogs.module.css'
+import {DialogsItem} from "./dialogsItem/DialogsItem";
+import {Message} from "./message/Message";
 
 
-export const Dialogs = ({dialog, message, onNewMessage, onSendMessage, newMessageText}) => {
+export const Dialogs = ({onNewMessage, onSendMessage, messagesPage}) => {
+  console.log('Dialogs')
+
+  const newMessageText = messagesPage.newMessageText
+
+  const dialog = messagesPage.dialogs.map(dialog =>
+    <DialogsItem key={dialog.id}
+                 name={dialog.name}
+                 id={dialog.id}/>)
+  const message = messagesPage.messages.map(message => <Message key={message.id}
+                                                                message={message.message}/>)
 
 
   const onSendMessageClick = () => onSendMessage()
@@ -11,6 +23,7 @@ export const Dialogs = ({dialog, message, onNewMessage, onSendMessage, newMessag
     onNewMessage(e.currentTarget.value)
   };
   return (
+
     <div className={s.dialogs}>
       <ul className={s.dialogsItems}>
         {dialog}

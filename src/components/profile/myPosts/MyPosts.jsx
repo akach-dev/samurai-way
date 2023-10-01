@@ -11,8 +11,8 @@ export const MyPosts = ({posts, addPost, onChange, newPostText}) => {
     addPost()
   }
 
-
-  const post = posts.map(post => <Post key={post.id} id={post.id} message={post.message} likesCount={post.likesCount}/>)
+  const post = posts.map((post, index) => <Post key={index} id={post.id} message={post.message}
+                                                likesCount={post.likesCount}/>)
 
   const onChangeHandler = () => {
     onChange(textareaRef.current.value)
