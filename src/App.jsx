@@ -20,6 +20,9 @@ function App() {
         } path='/profile'/>
         <Route render={() => <DialogsContainer
         />} path='/dialogs'/>
+        <Route
+          render={() => <div>users</div>}
+        />
       </main>
       <footer>footer</footer>
     </div>
