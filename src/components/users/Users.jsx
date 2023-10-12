@@ -51,7 +51,7 @@ export const Users = (props) => {
         props.usersPage.users.map(user => {
           return <div key={user.id}>
             <div>
-              <div><img className={s.userPhoto} src="" alt="user picture"/></div>
+              <div><img className={s.userPhoto} src="" alt="user logo"/></div>
               <div>
                 <button onClick={() => {
                   !user.followed
