@@ -1,24 +1,21 @@
 import s from "./Users.module.css"
-import axios from "axios";
 import userPhoto from '../../assets/img/account-avatar-profile-user.svg'
 import {Component} from "react";
+import axios from "axios";
 
 export class Users extends Component {
-  constructor(props) {
-    super(props);
+  
+  componentDidMount() {
     axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
       this.props.setUsers(response.data.items)
     })
   }
 
-
   render() {
     const {usersPage, follow, unfollow} = this.props
 
-
     return (
       <div>
-        <button onClick={this.getUsers}>Get Users</button>
         {
           usersPage.users.map(user => {
             return <div key={user.id}>
