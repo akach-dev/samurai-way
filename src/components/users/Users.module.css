@@ -2,3 +2,13 @@
     width: 100px;
     height: 100px;
 }
+
+.selected {
+    font-weight: 700;
+}
+
+.pageCount {
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 5px;
+}
