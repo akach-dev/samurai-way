@@ -3,15 +3,19 @@ import axios from "axios";
 import userPhoto from '../../assets/img/account-avatar-profile-user.svg'
 
 export const Users = (props) => {
-  if (!props.usersPage.users.length) {
-    axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-      props.setUsers(response.data.items)
-    })
+  const getUsers = () => {
+    if (!props.usersPage.users.length) {
+      axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+        props.setUsers(response.data.items)
+      })
 
+    }
   }
+
 
   return (
     <div>
+      <button onClick={getUsers}>Get Users</button>
       {
         props.usersPage.users.map(user => {
           return <div key={user.id}>
