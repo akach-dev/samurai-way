@@ -32,8 +32,10 @@ export const Users = ({usersPage, currentPage, pageSize, onChangePage, unfollow,
         usersPage.users.map(user => {
           return <div key={user.id}>
             <div>
-              <div><img className={s.userPhoto} src={user.photos.small != null ? user.photos.small : userPhoto}
-                        alt="user logo"/></div>
+              <div>
+                <img className={s.userPhoto} src={user.photos.small != null ? user.photos.small : userPhoto}
+                     alt="user logo"/>
+              </div>
               <div>
                 <button onClick={() => {
                   !user.followed
