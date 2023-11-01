@@ -1,6 +1,7 @@
 import React from 'react';
 import s from "./Users.module.css";
 import userPhoto from "../../assets/img/account-avatar-profile-user.svg";
+import {NavLink} from "react-router-dom";
 
 export const Users = ({usersPage, currentPage, pageSize, onChangePage, unfollow, follow, totalCount}) => {
 
@@ -10,8 +11,7 @@ export const Users = ({usersPage, currentPage, pageSize, onChangePage, unfollow,
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i)
   }
-
-
+  
   return (
     <div>
       <div>
@@ -33,8 +33,10 @@ export const Users = ({usersPage, currentPage, pageSize, onChangePage, unfollow,
           return <div key={user.id}>
             <div>
               <div>
-                <img className={s.userPhoto} src={user.photos.small != null ? user.photos.small : userPhoto}
-                     alt="user logo"/>
+                <NavLink to={`/profile/${user.id}`}>
+                  <img className={s.userPhoto} src={user.photos.small != null ? user.photos.small : userPhoto}
+                       alt="user logo"/>
+                </NavLink>
               </div>
               <div>
                 <button onClick={() => {

@@ -6,7 +6,7 @@ import {Users} from "./Users";
 import {PreLoader} from "../common/PreLoader";
 
 
-export class UsersContainer extends Component {
+class UsersContainer extends Component {
 
   componentDidMount() {
     this.props.toggleIsFetching(true)
