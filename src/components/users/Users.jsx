@@ -2,6 +2,7 @@ import React from 'react';
 import s from "./Users.module.css";
 import userPhoto from "../../assets/img/account-avatar-profile-user.svg";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 export const Users = ({usersPage, currentPage, pageSize, onChangePage, unfollow, follow, totalCount}) => {
 
@@ -11,7 +12,7 @@ export const Users = ({usersPage, currentPage, pageSize, onChangePage, unfollow,
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i)
   }
-  
+
   return (
     <div>
       <div>
@@ -39,13 +40,35 @@ export const Users = ({usersPage, currentPage, pageSize, onChangePage, unfollow,
                 </NavLink>
               </div>
               <div>
-                <button onClick={() => {
-                  !user.followed
-                    ? follow(user.id)
-                    : unfollow(user.id)
-                }}>{user.followed
-                  ? 'Follow'
-                  : 'Unfollow'}</button>
+                {!user.followed ? (
+                  <button onClick={() => {
+                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {
+                      withCredentials: true, headers: {
+                        'API-KEY': '6ff77210-e71e-46ba-98fd-7bb7e9655f9e'
+                      }
+                    })
+                      .then(response => {
+                        follow(user.id)
+                        if (response.data.resultCode === 0) follow(user.id)
+                      })
+                  }}>
+                    Follow
+                  </button>
+                ) : (
+                  <button onClick={() => {
+                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
+                      withCredentials: true, headers: {
+                        'API-KEY': '6ff77210-e71e-46ba-98fd-7bb7e9655f9e'
+                      }
+                    })
+                      .then(response => {
+                        if (response.data.resultCode === 0) unfollow(user.id)
+                      })
+                  }}>
+                    Unfollows
+                  </button>
+                )
+                }
               </div>
             </div>
             <div>
