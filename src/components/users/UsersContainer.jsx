@@ -4,21 +4,19 @@ import {Component} from "react";
 import axios from "axios";
 import {Users} from "./Users";
 import {PreLoader} from "../common/PreLoader";
+import {usersApi} from "../../api/usersApi";
 
 
 class UsersContainer extends Component {
 
   componentDidMount() {
     this.props.toggleIsFetching(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
-      withCredentials: true, headers: {
-        'API-KEY': '6ff77210-e71e-46ba-98fd-7bb7e9655f9e'
-      }
-    }).then(response => {
-      this.props.toggleIsFetching(false)
-      this.props.setUsers(response.data.items)
-      this.props.setTotalCount(response.data.totalCount / 300)
-    })
+    usersApi.getUsers(this.props.currentPage, this.props.pageSize)
+      .then(data => {
+        this.props.toggleIsFetching(false)
+        this.props.setUsers(data.items)
+        this.props.setTotalCount(data.totalCount / 300)
+      })
   }
 
   onChangePage = (page) => {
