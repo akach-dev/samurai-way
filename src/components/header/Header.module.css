@@ -1,5 +1,10 @@
 .header {
+    height: 60px;
     grid-column: span 4;
     background-color: blueviolet;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
 }
 
