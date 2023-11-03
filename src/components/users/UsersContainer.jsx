@@ -8,7 +8,6 @@ import {usersApi} from "../../api/usersApi";
 
 
 class UsersContainer extends Component {
-
   componentDidMount() {
     this.props.toggleIsFetching(true)
     usersApi.getUsers(this.props.currentPage, this.props.pageSize)
