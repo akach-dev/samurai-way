@@ -31,7 +31,10 @@ export const Users = ({
             return <span
               className={currentPage === page ? s.pageCount + ' ' + s.selected + '' : s.pageCount}
               key={page}
-              onClick={() => onChangePage(page)}
+              onClick={() => {
+                onChangePage(page)
+              }
+              }
             >
                 {page}</span>
           })
@@ -39,6 +42,7 @@ export const Users = ({
       </div>
       {
         usersPage.users.map(user => {
+          console.log(user)
           return <div key={user.id}>
             <div>
               <div>

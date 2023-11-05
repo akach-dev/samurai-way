@@ -1,3 +1,5 @@
+import {usersApi} from "../api/usersApi";
+
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 
 let initialState = {
@@ -31,5 +33,11 @@ export const profileReducer = (state = initialState, action) => {
       return state
   }
 };
-
+// actions creator
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+
+// thunks creator
+export const getUserProfile = (userId) => (dispatch) => {
+  usersApi.getProfile(userId)
+    .then(response => dispatch(setUserProfile(response.data)))
+}
