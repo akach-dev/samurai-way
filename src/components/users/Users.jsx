@@ -42,7 +42,6 @@ export const Users = ({
       </div>
       {
         usersPage.users.map(user => {
-          console.log(user)
           return <div key={user.id}>
             <div>
               <div>

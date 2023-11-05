@@ -2,9 +2,10 @@ import React from 'react';
 import s from './Dialogs.module.css'
 import {DialogsItem} from "./dialogsItem/DialogsItem";
 import {Message} from "./message/Message";
+import {Redirect} from "react-router-dom";
 
 
-export const Dialogs = ({onNewMessage, onSendMessage, messagesPage}) => {
+export const Dialogs = ({onNewMessage, onSendMessage, messagesPage, isAuth}) => {
 
   const newMessageText = messagesPage.newMessageText
 
@@ -21,24 +22,26 @@ export const Dialogs = ({onNewMessage, onSendMessage, messagesPage}) => {
   const onNewMessageChange = (e) => {
     onNewMessage(e.currentTarget.value)
   };
-  return (
 
-    <div className={s.dialogs}>
-      <ul className={s.dialogsItems}>
-        {dialog}
-      </ul>
-      <ul className={s.messages}>
-        {message}
-        <div><textarea
-          value={newMessageText}
-          onChange={onNewMessageChange}
-          placeholder={'Enter your message'}></textarea></div>
-        <div>
-          <button onClick={onSendMessageClick}>Send</button>
-        </div>
-      </ul>
-    </div>
-  );
+  return !isAuth
+    ? <Redirect to={'/login'}/>
+    : (
+      <div className={s.dialogs}>
+        <ul className={s.dialogsItems}>
+          {dialog}
+        </ul>
+        <ul className={s.messages}>
+          {message}
+          <div><textarea
+            value={newMessageText}
+            onChange={onNewMessageChange}
+            placeholder={'Enter your message'}></textarea></div>
+          <div>
+            <button onClick={onSendMessageClick}>Send</button>
+          </div>
+        </ul>
+      </div>
+    );
 };
 
 
