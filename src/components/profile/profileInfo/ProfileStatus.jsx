@@ -1,9 +1,9 @@
 import {Component} from "react";
 
 export class ProfileStatus extends Component {
-
   state = {
-    editMode: false
+    editMode: false,
+    status: this.props.status
   }
 
   activateEditeMode = () => {
@@ -12,17 +12,25 @@ export class ProfileStatus extends Component {
   }
 
   removeEditeMode = () => {
-    return this.setState(state => state.editMode = false)
+    this.setState(state => state.editMode = false)
+    this.props.updateStatus(this.state.status)
   }
+  changeStatusHandler = (e) => {
+    this.setState({
+      status: e.currentTarget.value
+    })
+  };
+
 
   render() {
-    let {value} = this.props;
+
 
     return (
       <div>
         {!this.state.editMode
-          ? <span onDoubleClick={this.activateEditeMode}>{value}</span>
-          : <input autoFocus value={value} onBlur={this.removeEditeMode}/>
+          ? <span onDoubleClick={this.activateEditeMode}>{this.props.status || '---------'}</span>
+          :
+          <input autoFocus value={this.state.status} onChange={this.changeStatusHandler} onBlur={this.removeEditeMode}/>
         }
       </div>
     )

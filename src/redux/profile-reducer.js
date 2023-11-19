@@ -1,6 +1,7 @@
-import {usersApi} from "../api/usersApi";
+import {profilesApi} from "../api/usersApi";
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
+const SET_USER_STATUS = 'SET_USER_STATUS'
 
 let initialState = {
   posts: [
@@ -10,7 +11,8 @@ let initialState = {
     {message: "Dada", id: '4', likesCount: 11},
   ],
   newPostText: 'it-incubator',
-  profile: null
+  profile: null,
+  status: ''
 }
 
 export const profileReducer = (state = initialState, action) => {
@@ -28,6 +30,11 @@ export const profileReducer = (state = initialState, action) => {
         ...state,
         profile: action.profile
       }
+    case  SET_USER_STATUS :
+      return {
+        ...state,
+        status: action.status
+      }
 
     default:
       return state
@@ -35,9 +42,22 @@ export const profileReducer = (state = initialState, action) => {
 };
 // actions creator
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
 
 // thunks creator
 export const getUserProfile = (userId) => (dispatch) => {
-  usersApi.getProfile(userId)
+  profilesApi.getProfile(userId)
     .then(response => dispatch(setUserProfile(response.data)))
+}
+export const getUserStatus = (userId) => (dispatch) => {
+  profilesApi.getStatus(userId)
+    .then(response => dispatch(setUserStatus(response.data)))
+}
+export const updateUserStatus = (status) => (dispatch) => {
+  profilesApi.updateStatus(status)
+    .then(response => {
+      if (response.data.resultCode === 0) {
+        dispatch(setUserStatus(status))
+      }
+    })
 }

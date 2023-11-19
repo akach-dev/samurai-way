@@ -3,10 +3,10 @@ import {ProfileInfo} from "./profileInfo/ProfileInfo";
 import {MyPostsContainer} from "./myPosts/MyPostsContainer";
 
 
-export const Profile = ({profile}) => {
+export const Profile = ({profile, status, updateStatus}) => {
   return (
     <div>
-      <ProfileInfo profile={profile}/>
+      <ProfileInfo profile={profile} status={status} updateStatus={updateStatus}/>
       <MyPostsContainer
       />
     </div>
