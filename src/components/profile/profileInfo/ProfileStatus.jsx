@@ -7,6 +7,7 @@ export class ProfileStatus extends Component {
   }
 
   activateEditeMode = () => {
+    console.log(this)
     return this.setState(state => state.editMode = true)
   }
 
