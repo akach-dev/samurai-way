@@ -8,7 +8,7 @@ export const ProfileInfo = ({profile, status, updateStatus}) => {
   return <>
     {!profile ? <PreLoader/> :
       <div>
-        <img className={s.img} src={profile.photos.large} alt="house"/>
+        <img className={s.img} src={profile.photos.large} alt="profile img"/>
         <ProfileStatus status={status} updateStatus={updateStatus}/>
       </div>
     }
