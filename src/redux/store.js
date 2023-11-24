@@ -1,17 +1,12 @@
 import {profileReducer} from "./profile-reducer";
 import {messagesReducer} from "./messages-reducer";
 
-export const addPostAC = () => {
-  return {type: 'ADD-POST'}
+export const addPostAC = (newPostText) => {
+  return {type: 'ADD-POST', newPostText}
 }
-export const updateNewPostTextAC = (text) => {
-  return {type: 'UPDATE-NEW-POST-TEXT', text}
-}
-export const updateNewMessageTextAC = (text) => {
-  return {type: 'UPDATE-NEW-MESSAGE-TEXT', text}
-}
-export const sendNewMessageTextAC = () => {
-  return {type: 'SEND-NEW-MESSAGE-TEXT'}
+
+export const sendNewMessageTextAC = (newMessageDody) => {
+  return {type: 'SEND-NEW-MESSAGE-TEXT', newMessageDody}
 }
 
 

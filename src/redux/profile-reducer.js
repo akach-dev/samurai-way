@@ -10,7 +10,6 @@ let initialState = {
     {message: "Blab-la", id: '3', likesCount: 18},
     {message: "Dada", id: '4', likesCount: 11},
   ],
-  newPostText: 'it-incubator',
   profile: null,
   status: ''
 }
@@ -19,12 +18,9 @@ export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD-POST":
       let newPost = {
-        id: '5', message: state.newPostText, likesCount: 0
+        id: '5', message: action.newPostText, likesCount: 0
       }
       return {...state, posts: [...state.posts, newPost], newPostText: ''}
-    case "UPDATE-NEW-POST-TEXT":
-      return {...state, newPostText: action.text}
-
     case SET_USER_PROFILE :
       return {
         ...state,

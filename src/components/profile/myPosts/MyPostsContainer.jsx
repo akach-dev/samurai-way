@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import {MyPosts} from "./MyPosts";
-import {addPostAC, updateNewPostTextAC} from "../../../redux/store";
+import {addPostAC} from "../../../redux/store";
 
 
 let mapStateToProps = (state) => {
@@ -13,11 +13,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    addPost() {
-      dispatch(addPostAC())
-    },
-    updatePostText(text) {
-      dispatch(updateNewPostTextAC(text))
+    addPost(newPostText) {
+      dispatch(addPostAC(newPostText))
     }
   }
 }
