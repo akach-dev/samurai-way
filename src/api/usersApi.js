@@ -37,5 +37,12 @@ export const profilesApi = {
 export const authApi = {
   me() {
     return instance.get('auth/me')
-  }
+  },
+  login(authData) {
+    return instance.post('auth/login', authData)
+  },
+  logout() {
+    return instance.delete('auth/login')
+  },
+
 }

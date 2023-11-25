@@ -9,7 +9,6 @@ export const FormControls = ({input, meta, ...props}) => {
     </div>
     {hasError && <span>{meta.error}</span>}
   </div>
-
 };
 
 

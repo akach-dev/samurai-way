@@ -3,13 +3,16 @@ import s from './Header.module.css';
 import {NavLink} from "react-router-dom";
 
 
-export const Header = ({isAuth, login}) => {
+export const Header = ({isAuth, login, logout}) => {
   return (
     <header className={s.header}>
       header
       <div>
         {
-          isAuth ? login : <NavLink to={'/login'}>Login</NavLink>
+          isAuth ?
+            <div>{login} -
+              <button onClick={logout}>Log out</button>
+            </div> : <NavLink to={'/login'}>Login</NavLink>
         }
       </div>
     </header>
